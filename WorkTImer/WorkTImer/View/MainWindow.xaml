@@ -21,11 +21,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button Content="おしごと"></Button>
+                    <Button Content="おしごと" Margin="10,1,10,1"></Button>
                 </Grid>
-                <Grid Grid.Column="1"></Grid>
+                <Grid Grid.Column="1">
+                    <Button Content="息抜き" Margin="10,1,10,1"></Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Content="ストップ" Margin="10,1,10,1"></Button>
+                </Grid>
+
             </Grid>
             <Grid Grid.Row="1"></Grid>
 

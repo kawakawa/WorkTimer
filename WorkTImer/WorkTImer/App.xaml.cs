@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WorkTImer.Model;
 
 namespace WorkTImer
 {
@@ -15,13 +16,18 @@ namespace WorkTImer
     {
         public App()
         {
+            Init();
 
             var vm = new ViewModel.MainWindowViewModel();
-
             vm.Show();
+        }
 
-
-
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
+        public void Init()
+        {
+            AppStatus.Init();
         }
 
     }

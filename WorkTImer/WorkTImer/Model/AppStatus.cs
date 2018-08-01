@@ -8,6 +8,13 @@ namespace WorkTImer.Model
 {
     public class AppStatus
     {
-        public Mode NowMode { get; set; }
+        public static Mode NowMode { get; set; }
+
+
+
+        public static void Init()
+        {
+            NowMode = Mode.Stop;
+        }
     }
 }

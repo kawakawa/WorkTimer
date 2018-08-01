@@ -62,6 +62,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command\ButtonRelaxCommand.cs" />
+    <Compile Include="Command\ButtonStopTimerCommand.cs" />
     <Compile Include="Command\ButtonWorkCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Model\AppStatus.cs" />

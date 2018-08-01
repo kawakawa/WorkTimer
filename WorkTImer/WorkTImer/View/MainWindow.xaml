@@ -24,13 +24,13 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button Content="おしごと" Margin="10,1,10,1"></Button>
+                    <Button Content="おしごと" Margin="10,1,10,1" Command="{Binding ButtonWorkCommand}"></Button>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Button Content="息抜き" Margin="10,1,10,1"></Button>
+                    <Button Content="息抜き" Margin="10,1,10,1" Command="{Binding ButtonRelaxCommand}"></Button>
                 </Grid>
                 <Grid Grid.Column="2">
-                    <Button Content="ストップ" Margin="10,1,10,1"></Button>
+                    <Button Content="ストップ" Margin="10,1,10,1" Command="{Binding ButtonStopTimerCommand}"></Button>
                 </Grid>
 
             </Grid>

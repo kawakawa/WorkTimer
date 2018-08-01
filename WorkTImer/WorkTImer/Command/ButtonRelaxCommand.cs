@@ -3,16 +3,15 @@ using WorkTImer.Model;
 
 namespace WorkTImer.Command
 {
-    public class ButtonWorkCommand:RelayCommand
+    public class ButtonRelaxCommand: RelayCommand
     {
-
-        public ButtonWorkCommand(Action<object> execute)
+        public ButtonRelaxCommand(Action<object> execute)
             : base(execute) { }
 
 
         public override bool CanExecute(object parameter)
         {
-            return AppStatus.NowMode != Mode.Work;
+            return AppStatus.NowMode != Mode.Relax;
         }
     }
 }

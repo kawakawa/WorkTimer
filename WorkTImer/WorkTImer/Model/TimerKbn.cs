@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WorkTimer.Model
 {
-    public enum Mode
+    public enum TimerKbn
     {
-        Stop,
         Work,
         Relax
+        
     }
 }

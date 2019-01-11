@@ -1,7 +1,7 @@
 ﻿using System;
-using WorkTImer.Model;
+using WorkTimer.Model;
 
-namespace WorkTImer.Command
+namespace WorkTimer.Command
 {
     public class ButtonWorkCommand:RelayCommand
     {

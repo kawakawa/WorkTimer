@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0F1C1F08-178D-4393-863D-47E200E81FC5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WorkTImer</RootNamespace>
-    <AssemblyName>WorkTImer</AssemblyName>
+    <RootNamespace>WorkTimer</RootNamespace>
+    <AssemblyName>WorkTimer</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -68,6 +68,9 @@
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Model\AppStatus.cs" />
     <Compile Include="Model\Mode.cs" />
+    <Compile Include="Model\Timer.cs" />
+    <Compile Include="Model\TimerKbn.cs" />
+    <Compile Include="Model\TimerList.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

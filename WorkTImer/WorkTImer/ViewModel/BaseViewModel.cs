@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WorkTImer.ViewModel
+namespace WorkTimer.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

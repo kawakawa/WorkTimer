@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace WorkTImer.Command
+namespace WorkTimer.Command
 {
     public class RelayCommand : ICommand
     {

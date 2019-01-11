@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WorkTImer.Model
+namespace WorkTimer.Model
 {
     public class AppStatus
     {

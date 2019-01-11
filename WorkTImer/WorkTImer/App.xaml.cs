@@ -5,9 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using WorkTImer.Model;
+using WorkTimer.Model;
 
-namespace WorkTImer
+namespace WorkTimer
 {
     /// <summary>
     /// Interaction logic for App.xaml

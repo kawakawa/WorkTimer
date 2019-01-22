@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using WorkTimer.Command;
 using WorkTimer.Model;
 using WorkTimer.View;
@@ -18,16 +19,28 @@ namespace WorkTimer.ViewModel
         private TimerList _workTimeList;
         private TimerList _relaxTimerList;
 
+        private System.Timers.Timer _viewTimer;
+
 
         public MainWindowViewModel()
         {
             _window =new MainWindow(this);
             _timer = new Timer();
+            _viewTimer = new System.Timers.Timer
+            {
+                Interval = 1000
+            };
+            _viewTimer.Elapsed += _viewTimer_Elapsed;
+            
+
 
             _workTimeList = new TimerList(TimerKbn.Work);
             _relaxTimerList = new TimerList(TimerKbn.Relax);
+            AppStatus.NowMode = Mode.Stop;
 
         }
+
+
 
         //Command
 
@@ -59,9 +72,15 @@ namespace WorkTimer.ViewModel
         #endregion
 
 
+        private string _timerCountStr;
         public string TimerCountStr
         {
-            get { return "aaaaaaaaa"; }
+            get => _timerCountStr;
+            set
+            {
+                _timerCountStr = value;
+                OnPropertyChanged("TimerCountStr");
+            }
         }
 
 
@@ -77,7 +96,42 @@ namespace WorkTimer.ViewModel
         }
 
 
+        private string _relaxTImerSum = string.Empty;
 
+        public string RelaxTimeSum
+        {
+            get => _relaxTImerSum;
+            set
+            {
+                _relaxTImerSum = value;
+                OnPropertyChanged("RelaxTimeSum");
+            }
+        }
+
+        private string _wokerTimeListStr = null;
+
+        public string WokerTimeList
+        {
+            get => _wokerTimeListStr;
+            set
+            {
+                _wokerTimeListStr = value;
+                OnPropertyChanged("WokerTimeList");
+
+            }
+        }
+
+        private string _relaxTimeListStr = null;
+
+        public string RelaxTimeList
+        {
+            get => _relaxTimeListStr;
+            set
+            {
+                _relaxTimeListStr = value;
+                OnPropertyChanged("RelaxTimeList");
+            }
+        }
 
 
 
@@ -92,8 +146,11 @@ namespace WorkTimer.ViewModel
                 TimerStop();
 
 
+            AppStatus.NowMode = Mode.Work;
             _timerKbn = TimerKbn.Work;
             _timer.Start();
+            _viewTimer.Start();
+            
         }
 
 
@@ -104,17 +161,31 @@ namespace WorkTimer.ViewModel
             if (_timer.IsStarting)
                 TimerStop();
 
+            AppStatus.NowMode = Mode.Relax;
             _timerKbn = TimerKbn.Relax;
             _timer.Start();
+            _viewTimer.Start();
         }
 
-
+        private void _viewTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            var ts = _timer.GetTicks();
+            TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
+        }
 
 
 
         private void TimerStop(object obj=null)
         {
+            AppStatus.NowMode = Mode.Stop;
+
+
+            _viewTimer.Stop();
+
+
             var ts = _timer.GetTicks();
+            TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
+
             _timer.Stop();
 
             if(_timerKbn == TimerKbn.Work)
@@ -126,9 +197,19 @@ namespace WorkTimer.ViewModel
             ListViewChanged();
         }
 
+
+
+
+
+
+
         private void ListViewChanged()
         {
             WokerTimeSum = _workTimeList.GetSumString();
+            RelaxTimeSum = _relaxTimerList.GetSumString();
+
+            WokerTimeList = _workTimeList.GetListStr();
+            RelaxTimeList = _relaxTimerList.GetListStr();
         }
 
 

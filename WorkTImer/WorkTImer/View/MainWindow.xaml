@@ -35,7 +35,7 @@
 
             </Grid>
             <Grid Grid.Row="1">
-                <TextBlock Text="{Binding TimerCount}"></TextBlock>
+                <TextBlock Text="{Binding TimerCountStr}"></TextBlock>
             </Grid>
 
         </Grid>
@@ -65,7 +65,7 @@
                             <TextBlock Text="{Binding WokerTimeSum}"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="{Binding WokerTimeList}"></TextBlock>
+                            <TextBlock Text="{Binding WokerTimeList}" ScrollViewer.HorizontalScrollBarVisibility="Auto"></TextBlock>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -83,7 +83,7 @@
 
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="{Binding RelaxTime}"></TextBlock>
+                            <TextBlock Text="{Binding RelaxTimeList}" ScrollViewer.HorizontalScrollBarVisibility="Auto"></TextBlock>
                         </Grid>
                     </Grid>
 

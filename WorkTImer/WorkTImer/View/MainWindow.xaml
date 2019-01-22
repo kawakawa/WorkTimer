@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkTimer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="270.181" Width="541.566" Background="#FF6C6A6A">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -35,11 +35,11 @@
 
             </Grid>
             <Grid Grid.Row="1">
-                <TextBlock Text="{Binding TimerCountStr}"></TextBlock>
+                <TextBlock Text="{Binding TimerCountStr}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
             </Grid>
 
         </Grid>
-        
+
         <Grid Grid.Row="1" >
             <Border BorderBrush="Silver" BorderThickness="1"  ></Border>
 
@@ -56,16 +56,16 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid Grid.Row="0">
                             <Border BorderBrush="Silver" BorderThickness="1"  ></Border>
-                            <TextBlock Text="{Binding WokerTimeSum}"></TextBlock>
+                            <TextBlock Text="{Binding WokerTimeSum}"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="{Binding WokerTimeList}" ScrollViewer.HorizontalScrollBarVisibility="Auto"></TextBlock>
+                            <TextBlock Text="{Binding WokerTimeList}" Margin="3,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Foreground="White"></TextBlock>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -74,16 +74,16 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Border BorderBrush="Silver" BorderThickness="1"  ></Border>
-                            <TextBlock Text="{Binding RelaxTimeSum}"></TextBlock>
+                            <TextBlock Text="{Binding RelaxTimeSum}"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
 
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="{Binding RelaxTimeList}" ScrollViewer.HorizontalScrollBarVisibility="Auto"></TextBlock>
+                            <TextBlock Text="{Binding RelaxTimeList}" Margin="3,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Foreground="White"></TextBlock>
                         </Grid>
                     </Grid>
 

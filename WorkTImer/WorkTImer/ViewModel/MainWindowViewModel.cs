@@ -6,11 +6,11 @@ namespace WorkTimer.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        private readonly View.MainWindow _window;
+        private readonly MainWindow _window;
         private readonly TimeMeasurement _timeMeasurement;
-        private TimerList _workTimeList;
-        private TimerList _relaxTimerList;
-        private System.Timers.Timer _viewTimer;
+        private readonly TimerList _workTimeList;
+        private readonly TimerList _relaxTimerList;
+        private readonly System.Timers.Timer _viewTimer;
 
 
 

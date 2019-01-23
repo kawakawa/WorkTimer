@@ -11,12 +11,12 @@ namespace WorkTimer.Model
     {
 
 
-        private TimerKbn _timerKbn;
+        private Mode _timerKbn;
 
         private List<TimeSpan> _timerList = new List<TimeSpan>();
 
         /// <inheritdoc />
-        public TimerList(TimerKbn timerKbn)
+        public TimerList(Mode timerKbn)
         {
             this._timerKbn = timerKbn;
         }

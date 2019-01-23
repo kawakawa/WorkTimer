@@ -8,7 +8,6 @@ namespace WorkTimer.ViewModel
     {
         private readonly View.MainWindow _window;
         private readonly Timer _timer;
-        private TimerKbn _timerKbn=TimerKbn.Work;
         private TimerList _workTimeList;
         private TimerList _relaxTimerList;
         private System.Timers.Timer _viewTimer;
@@ -28,8 +27,8 @@ namespace WorkTimer.ViewModel
             
 
 
-            _workTimeList = new TimerList(TimerKbn.Work);
-            _relaxTimerList = new TimerList(TimerKbn.Relax);
+            _workTimeList = new TimerList(Mode.Work);
+            _relaxTimerList = new TimerList(Mode.Relax);
             AppStatus.NowMode = Mode.Stop;
 
         }
@@ -139,7 +138,6 @@ namespace WorkTimer.ViewModel
 
 
             AppStatus.NowMode = Mode.Work;
-            _timerKbn = TimerKbn.Work;
             _timer.Start();
             _viewTimer.Start();
             
@@ -154,7 +152,6 @@ namespace WorkTimer.ViewModel
                 TimerStop();
 
             AppStatus.NowMode = Mode.Relax;
-            _timerKbn = TimerKbn.Relax;
             _timer.Start();
             _viewTimer.Start();
         }
@@ -169,9 +166,6 @@ namespace WorkTimer.ViewModel
 
         private void TimerStop(object obj=null)
         {
-            AppStatus.NowMode = Mode.Stop;
-
-
             _viewTimer.Stop();
 
 
@@ -180,11 +174,13 @@ namespace WorkTimer.ViewModel
 
             _timer.Stop();
 
-            if(_timerKbn == TimerKbn.Work)
+            if(AppStatus.NowMode == Mode.Work)
                 _workTimeList.Add(_timer.GetTicks());
-            else
+            else if (AppStatus.NowMode == Mode.Relax)
                 _relaxTimerList.Add(_timer.GetTicks());
 
+
+            AppStatus.NowMode = Mode.Stop;
 
             ListViewChanged();
         }

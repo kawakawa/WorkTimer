@@ -8,6 +8,9 @@ namespace WorkTimer.Model
 {
     public class AppStatus
     {
+        /// <summary>
+        /// 現在のタイマー状態
+        /// </summary>
         public static Mode NowMode { get; set; }
 
 

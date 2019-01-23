@@ -69,7 +69,6 @@
     <Compile Include="Model\AppStatus.cs" />
     <Compile Include="Model\Mode.cs" />
     <Compile Include="Model\Timer.cs" />
-    <Compile Include="Model\TimerKbn.cs" />
     <Compile Include="Model\TimerList.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

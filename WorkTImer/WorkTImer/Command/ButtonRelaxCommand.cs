@@ -3,9 +3,9 @@ using WorkTimer.Model;
 
 namespace WorkTimer.Command
 {
-    public class ButtonRelaxCommand: RelayCommand
+    public class RelaxCommand: RelayCommand
     {
-        public ButtonRelaxCommand(Action<object> execute)
+        public RelaxCommand(Action<object> execute)
             : base(execute) { }
 
 

@@ -3,9 +3,9 @@ using WorkTimer.Model;
 
 namespace WorkTimer.Command
 {
-    public class ButtonStopTimerCommand:RelayCommand
+    public class StopTimerCommand:RelayCommand
     {
-        public ButtonStopTimerCommand(Action<object> execute)
+        public StopTimerCommand(Action<object> execute)
             : base(execute) { }
 
 

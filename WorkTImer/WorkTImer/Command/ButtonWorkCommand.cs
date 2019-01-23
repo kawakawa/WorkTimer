@@ -3,10 +3,10 @@ using WorkTimer.Model;
 
 namespace WorkTimer.Command
 {
-    public class ButtonWorkCommand:RelayCommand
+    public class WorkCommand:RelayCommand
     {
 
-        public ButtonWorkCommand(Action<object> execute)
+        public WorkCommand(Action<object> execute)
             : base(execute) { }
 
 

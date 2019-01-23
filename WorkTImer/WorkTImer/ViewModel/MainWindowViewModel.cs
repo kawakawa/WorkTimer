@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
-using WorkTimer.Command;
+﻿using WorkTimer.Command;
 using WorkTimer.Model;
 using WorkTimer.View;
 
@@ -47,26 +41,24 @@ namespace WorkTimer.ViewModel
         #region Command
 
         //仕事ボタン
-        private ButtonWorkCommand _buttonWorkCommand;
-        public ButtonWorkCommand ButtonWorkCommand =>
-            _buttonWorkCommand ?? (_buttonWorkCommand = new ButtonWorkCommand(WorkTimerStart));
-
-
-
+        private WorkCommand _buttonWorkCommand;
+        public WorkCommand ButtonWorkCommand =>
+            _buttonWorkCommand ?? (_buttonWorkCommand = new WorkCommand(WorkTimerStart));
+        
 
         //Relaxボタン
-        private ButtonRelaxCommand _buttonRelaxCommand;
+        private RelaxCommand _buttonRelaxCommand;
 
-        public ButtonRelaxCommand ButtonRelaxCommand =>
-            _buttonRelaxCommand ?? (_buttonRelaxCommand = new ButtonRelaxCommand(RelaxTimerStart));
+        public RelaxCommand ButtonRelaxCommand =>
+            _buttonRelaxCommand ?? (_buttonRelaxCommand = new RelaxCommand(RelaxTimerStart));
 
 
 
         //TimerStopボタン
-        private ButtonStopTimerCommand _buttonStopTimerCommand;
+        private StopTimerCommand _buttonStopTimerCommand;
 
-        public ButtonStopTimerCommand ButtonStopTimerCommand =>
-            _buttonStopTimerCommand ?? (_buttonStopTimerCommand = new ButtonStopTimerCommand(TimerStop));
+        public StopTimerCommand ButtonStopTimerCommand =>
+            _buttonStopTimerCommand ?? (_buttonStopTimerCommand = new StopTimerCommand(TimerStop));
 
 
         #endregion

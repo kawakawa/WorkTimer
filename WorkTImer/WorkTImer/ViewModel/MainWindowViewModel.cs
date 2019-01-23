@@ -9,11 +9,11 @@ namespace WorkTimer.ViewModel
         private readonly View.MainWindow _window;
         private readonly Timer _timer;
         private TimerKbn _timerKbn=TimerKbn.Work;
-
         private TimerList _workTimeList;
         private TimerList _relaxTimerList;
-
         private System.Timers.Timer _viewTimer;
+
+
 
 
         public MainWindowViewModel()

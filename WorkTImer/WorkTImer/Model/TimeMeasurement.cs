@@ -41,12 +41,12 @@ namespace WorkTimer.Model
         }
 
 
-        public string GetTicksString()
-        {
-            var ts = _sw.Elapsed.Ticks;
-            return ts.ToString(@"dd\.hh\:mm\:ss");
-
-        }
+//        public string GetTicksString()
+//        {
+//            var ts = _sw.Elapsed.Ticks;
+//            return ts.ToString(@"dd\.hh\:mm\:ss");
+//
+//        }
 
         public TimeSpan GetTicks()
         {

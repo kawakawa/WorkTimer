@@ -7,7 +7,7 @@ namespace WorkTimer.ViewModel
     public class MainWindowViewModel : BaseViewModel
     {
         private readonly View.MainWindow _window;
-        private readonly Timer _timer;
+        private readonly TimeMeasurement _timeMeasurement;
         private TimerList _workTimeList;
         private TimerList _relaxTimerList;
         private System.Timers.Timer _viewTimer;
@@ -18,7 +18,7 @@ namespace WorkTimer.ViewModel
         public MainWindowViewModel()
         {
             _window =new MainWindow(this);
-            _timer = new Timer();
+            _timeMeasurement = new TimeMeasurement();
             _viewTimer = new System.Timers.Timer
             {
                 Interval = 1000
@@ -133,12 +133,12 @@ namespace WorkTimer.ViewModel
 
         private void WorkTimerStart(object obj)
         {
-            if(_timer.IsStarting)
+            if(_timeMeasurement.IsStarting)
                 TimerStop();
 
 
             AppStatus.NowMode = Mode.Work;
-            _timer.Start();
+            _timeMeasurement.Start();
             _viewTimer.Start();
             
         }
@@ -148,17 +148,17 @@ namespace WorkTimer.ViewModel
 
         private void RelaxTimerStart(object obj)
         {
-            if (_timer.IsStarting)
+            if (_timeMeasurement.IsStarting)
                 TimerStop();
 
             AppStatus.NowMode = Mode.Relax;
-            _timer.Start();
+            _timeMeasurement.Start();
             _viewTimer.Start();
         }
 
         private void _viewTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            var ts = _timer.GetTicks();
+            var ts = _timeMeasurement.GetTicks();
             TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
         }
 
@@ -169,15 +169,15 @@ namespace WorkTimer.ViewModel
             _viewTimer.Stop();
 
 
-            var ts = _timer.GetTicks();
+            var ts = _timeMeasurement.GetTicks();
             TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
 
-            _timer.Stop();
+            _timeMeasurement.Stop();
 
             if(AppStatus.NowMode == Mode.Work)
-                _workTimeList.Add(_timer.GetTicks());
+                _workTimeList.Add(_timeMeasurement.GetTicks());
             else if (AppStatus.NowMode == Mode.Relax)
-                _relaxTimerList.Add(_timer.GetTicks());
+                _relaxTimerList.Add(_timeMeasurement.GetTicks());
 
 
             AppStatus.NowMode = Mode.Stop;

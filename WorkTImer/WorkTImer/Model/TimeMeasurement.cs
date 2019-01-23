@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace WorkTimer.Model
 {
-    public class Timer
+    public class TimeMeasurement
     {
 
-        private Stopwatch _sw;
+        private readonly Stopwatch _sw;
 
         public bool IsStarting { get; private set; } = false;
 
-        public Timer()
+        public TimeMeasurement()
         {
             _sw = new Stopwatch();
         }

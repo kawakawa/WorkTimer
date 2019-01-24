@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WorkTimer.Model
 {
@@ -12,7 +8,7 @@ namespace WorkTimer.Model
 
         private readonly Stopwatch _sw;
 
-        public bool IsStarting { get; private set; } = false;
+        public bool IsStarting { get; private set; }
 
         public TimeMeasurement()
         {
@@ -23,7 +19,7 @@ namespace WorkTimer.Model
 
         public void Start()
         {
-            if(IsStarting!=false)
+            if(IsStarting)
                 return;
 
             IsStarting = true;

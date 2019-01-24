@@ -10,29 +10,41 @@ namespace WorkTimer.ViewModel
         private readonly TimeMeasurement _timeMeasurement;
         private readonly TimerList _workTimeList;
         private readonly TimerList _relaxTimerList;
-        private readonly System.Timers.Timer _viewTimer;
+        private System.Timers.Timer _viewTimer;
 
 
 
 
         public MainWindowViewModel()
         {
+            //ViewにViewModelのインスタンス渡す
             _window =new MainWindow(this);
+
+            
             _timeMeasurement = new TimeMeasurement();
+            
+            IniViewTimer();
+
+
+            _workTimeList = new TimerList();
+            _relaxTimerList = new TimerList();
+
+
+            AppStatus.NowMode = Mode.Stop;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void IniViewTimer()
+        {
             _viewTimer = new System.Timers.Timer
             {
                 Interval = 1000
             };
             _viewTimer.Elapsed += _viewTimer_Elapsed;
-            
-
-
-            _workTimeList = new TimerList(Mode.Work);
-            _relaxTimerList = new TimerList(Mode.Relax);
-            AppStatus.NowMode = Mode.Stop;
-
         }
-
 
 
         //Command
@@ -63,6 +75,11 @@ namespace WorkTimer.ViewModel
         #endregion
 
 
+        #region  表示項目
+
+        
+
+
         private string _timerCountStr;
         public string TimerCountStr
         {
@@ -76,43 +93,43 @@ namespace WorkTimer.ViewModel
 
 
         private string _workerTimerSum = string.Empty;
-        public string WokerTimeSum
+        public string WorkerTimeSum
         {
             get => _workerTimerSum;
             set
             {
                 _workerTimerSum = value;
-                OnPropertyChanged("WokerTimeSum");
+                OnPropertyChanged("WorkerTimeSum");
             }
         }
 
 
-        private string _relaxTImerSum = string.Empty;
+        private string _relaxTimerSum = string.Empty;
 
         public string RelaxTimeSum
         {
-            get => _relaxTImerSum;
+            get => _relaxTimerSum;
             set
             {
-                _relaxTImerSum = value;
+                _relaxTimerSum = value;
                 OnPropertyChanged("RelaxTimeSum");
             }
         }
 
-        private string _wokerTimeListStr = null;
+        private string _workerTimeListStr;
 
-        public string WokerTimeList
+        public string WorkerTimeList
         {
-            get => _wokerTimeListStr;
+            get => _workerTimeListStr;
             set
             {
-                _wokerTimeListStr = value;
-                OnPropertyChanged("WokerTimeList");
+                _workerTimeListStr = value;
+                OnPropertyChanged("WorkerTimeList");
 
             }
         }
 
-        private string _relaxTimeListStr = null;
+        private string _relaxTimeListStr;
 
         public string RelaxTimeList
         {
@@ -127,10 +144,15 @@ namespace WorkTimer.ViewModel
 
 
 
+        #endregion
 
 
 
 
+        /// <summary>
+        /// 仕事タイマースタート
+        /// </summary>
+        /// <param name="obj"></param>
         private void WorkTimerStart(object obj)
         {
             if(_timeMeasurement.IsStarting)
@@ -143,8 +165,10 @@ namespace WorkTimer.ViewModel
             
         }
 
-
-
+        /// <summary>
+        /// リラックスタイマースタート
+        /// </summary>
+        /// <param name="obj"></param>
 
         private void RelaxTimerStart(object obj)
         {
@@ -156,28 +180,49 @@ namespace WorkTimer.ViewModel
             _viewTimer.Start();
         }
 
+        /// <summary>
+        /// ストップウォッチの表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void _viewTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
+            ViewTimerCount();
+        }
+
+        private void ViewTimerCount()
+        {
             var ts = _timeMeasurement.GetTicks();
-            TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
+            TimerCountStr = DataFormat.ToTicks(ts);
         }
 
 
+        /// <summary>
+        /// 時計停止
+        /// </summary>
+        /// <param name="obj"></param>
 
         private void TimerStop(object obj=null)
         {
+
             _viewTimer.Stop();
-
-
-            var ts = _timeMeasurement.GetTicks();
-            TimerCountStr = ts.ToString(@"dd\.hh\:mm\:ss");
-
             _timeMeasurement.Stop();
 
-            if(AppStatus.NowMode == Mode.Work)
-                _workTimeList.Add(_timeMeasurement.GetTicks());
-            else if (AppStatus.NowMode == Mode.Relax)
-                _relaxTimerList.Add(_timeMeasurement.GetTicks());
+
+            ViewTimerCount();
+
+
+
+            switch (AppStatus.NowMode)
+            {
+                case Mode.Work:
+                    _workTimeList.Add(_timeMeasurement.GetTicks());
+                    break;
+                case Mode.Relax:
+                    _relaxTimerList.Add(_timeMeasurement.GetTicks());
+                    break;
+            }
 
 
             AppStatus.NowMode = Mode.Stop;
@@ -193,10 +238,10 @@ namespace WorkTimer.ViewModel
 
         private void ListViewChanged()
         {
-            WokerTimeSum = _workTimeList.GetSumString();
+            WorkerTimeSum = _workTimeList.GetSumString();
             RelaxTimeSum = _relaxTimerList.GetSumString();
 
-            WokerTimeList = _workTimeList.GetListStr();
+            WorkerTimeList = _workTimeList.GetListStr();
             RelaxTimeList = _relaxTimerList.GetListStr();
         }
 

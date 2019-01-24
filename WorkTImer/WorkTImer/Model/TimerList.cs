@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace WorkTimer.Model
 {
@@ -11,15 +7,9 @@ namespace WorkTimer.Model
     {
 
 
-        private Mode _timerKbn;
 
-        private List<TimeSpan> _timerList = new List<TimeSpan>();
+        private readonly List<TimeSpan> _timerList = new List<TimeSpan>();
 
-        /// <inheritdoc />
-        public TimerList(Mode timerKbn)
-        {
-            this._timerKbn = timerKbn;
-        }
 
 
         public void Add(TimeSpan ts)
@@ -36,7 +26,7 @@ namespace WorkTimer.Model
                 sumTs=sumTs.Add(timeSpan);
             }
 
-            return sumTs.ToString(@"dd\.hh\:mm\:ss");
+            return ViewModel.DataFormat.ToTicks(sumTs);
         }
 
         public string GetListStr()
@@ -45,7 +35,7 @@ namespace WorkTimer.Model
 
             foreach (var timeSpan in _timerList)
             {
-                list.Add(timeSpan.ToString(@"dd\.hh\:mm\:ss"));
+                list.Add(ViewModel.DataFormat.ToTicks(timeSpan));
             }
 
             list.Reverse();

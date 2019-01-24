@@ -62,10 +62,10 @@
 
                         <Grid Grid.Row="0">
                             <Border BorderBrush="Silver" BorderThickness="1"  ></Border>
-                            <TextBlock Text="{Binding WokerTimeSum}"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                            <TextBlock Text="{Binding WorkerTimeSum}"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="{Binding WokerTimeList}" Margin="3,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding WorkerTimeList}" Margin="3,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Foreground="White"></TextBlock>
                         </Grid>
                     </Grid>
                 </Grid>

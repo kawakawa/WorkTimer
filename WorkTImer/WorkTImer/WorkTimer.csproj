@@ -71,6 +71,7 @@
     <Compile Include="Model\TimeMeasurement.cs" />
     <Compile Include="Model\TimerList.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\DataFormat.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

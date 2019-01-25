@@ -11,6 +11,7 @@ namespace WorkTimer.ViewModel
         private readonly TimerList _workTimeList;
         private readonly TimerList _relaxTimerList;
         private System.Timers.Timer _viewTimer;
+        private readonly ModeChangeVm _modeChangeVm;
 
 
 
@@ -29,8 +30,8 @@ namespace WorkTimer.ViewModel
             _workTimeList = new TimerList();
             _relaxTimerList = new TimerList();
 
-
-            AppStatus.NowMode = Mode.Stop;
+            _modeChangeVm = new ModeChangeVm(_window);
+            _modeChangeVm.Stop();
 
         }
 
@@ -159,7 +160,7 @@ namespace WorkTimer.ViewModel
                 TimerStop();
 
 
-            AppStatus.NowMode = Mode.Work;
+            _modeChangeVm.Work();
             _timeMeasurement.Start();
             _viewTimer.Start();
             
@@ -175,7 +176,7 @@ namespace WorkTimer.ViewModel
             if (_timeMeasurement.IsStarting)
                 TimerStop();
 
-            AppStatus.NowMode = Mode.Relax;
+            _modeChangeVm.Relax();
             _timeMeasurement.Start();
             _viewTimer.Start();
         }
@@ -225,7 +226,7 @@ namespace WorkTimer.ViewModel
             }
 
 
-            AppStatus.NowMode = Mode.Stop;
+            _modeChangeVm.Stop();
 
             ListViewChanged();
         }
